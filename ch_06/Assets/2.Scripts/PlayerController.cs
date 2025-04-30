@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rigd2D;
     Animator animator;
-    float jumpForce = 400f;
+    float jumpForce = 350f;
     public float WalkForce = 30f;
     float maxWalkspeed = 2.0f;
 
@@ -22,10 +22,11 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && rigd2D.velocity.y ==0)
         {
-            rigd2D.AddForce(transform.up *  jumpForce);
+            rigd2D.AddForce(transform.up * jumpForce);
         }
 
         int key = 0;
@@ -46,10 +47,17 @@ public class PlayerController : MonoBehaviour
 
         animator.speed = speedX / 2.0f;
 
+        
+
+
         if (transform.position.y < -10)
         {
             SceneManager.LoadScene("GameScene");
         }
-
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("°ñ");
+        SceneManager.LoadScene("ClearScene");
     }
 }
