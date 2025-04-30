@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rigd2D;
     Animator animator;
-    float jumpForce = 350f;
+    float jumpForce = 400f;
     public float WalkForce = 30f;
     float maxWalkspeed = 2.0f;
 
@@ -43,6 +44,12 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(key, 1, 1);
         }
 
-     animator.speed = speedX; 
+        animator.speed = speedX / 2.0f;
+
+        if (transform.position.y < -10)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+
     }
 }
