@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && rigd2D.velocity.y ==0)
         {
+            animator.SetTrigger("Jumprigger");
             rigd2D.AddForce(transform.up * jumpForce);
         }
 
