@@ -15,7 +15,7 @@ public class placeube : MonoBehaviour
         if (tabCount < 1) return;
 
         Touch touch = Input.GetTouch(0);
-        Vector3 touchPosition = cam.ScreenToViewportPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 1.0f));
+        Vector3 touchPosition = cam.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 1.0f));
         if(touch.phase == TouchPhase.Began)
         {
             GameObject go = Instantiate(cubePrefab, touchPosition, transform.rotation);
